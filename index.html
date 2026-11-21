@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>LUA HUB × DANZZ | Gaming Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient ambient1"></div>
+<div class="ambient ambient2"></div>
+
+<header class="navbar">
+  <a href="#" class="brand">
+    <span class="brand-lua">LUA</span> HUB <span class="brand-x">× DANZZ</span>
+  </a>
+  <nav>
+    <a href="#community">Community</a>
+    <a href="#links">Links</a>
+    <a href="#arcade">Free Games</a>
+  </nav>
+  <a class="donate-nav" href="https://saweria.co/LUAHUBDONATE/wishlist/kursi-gaming-impian-2-ftqvq0" target="_blank">♥ DONATE</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="status"><span class="pulse"></span> COMMUNITY GAMING PORTAL</div>
+      <h1>PLAY.<br><span>CONNECT.</span><br>LEVEL UP.</h1>
+      <p class="hero-desc">
+        Your gaming universe starts here. Explore links, join the community,
+        and play free mini games.
+      </p>
+      <div class="hero-buttons">
+        <a class="button red" href="#arcade">PLAY FREE GAMES ↗</a>
+        <a class="button outline" href="#community">EXPLORE COMMUNITY</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>FREE</strong><small>MINI GAMES</small></div>
+        <div><strong>24/7</strong><small>LINK ACCESS</small></div>
+        <div><strong>∞</strong><small>GOOD VIBES</small></div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="orbit orbit1"></div>
+      <div class="orbit orbit2"></div>
+      <div class="hero-core">
+        <div class="core-logo"><span>L</span>H</div>
+        <div class="core-caption">LUA HUB<br><small>GAMING NETWORK</small></div>
+      </div>
+      <div class="floating-card fc1">⚡ <span>GAMING MODE</span></div>
+      <div class="floating-card fc2">🎮 <span>ARCADE READY</span></div>
+      <div class="floating-card fc3">◉ <span>COMMUNITY</span></div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community" class="section">
+    <div class="section-heading">
+      <div>
+        <span class="overline">CONNECT WITH US</span>
+        <h2>Our Community</h2>
+      </div>
+      <span class="section-index">01 / COMMUNITY</span>
+    </div>
+
+    <div class="community-grid">
+      <a class="community-card danzz" href="https://whatsapp.com/channel/0029VbEVAqrAu3aPqG9kWy1o" target="_blank" rel="noopener noreferrer">
+        <div class="channel-logo">D</div>
+        <div class="community-info">
+          <span class="tiny-label">WHATSAPP CHANNEL</span>
+          <h3>DANZZ COMMUNITY</h3>
+          <p>Updates, content & community</p>
+        </div>
+        <span class="card-arrow">↗</span>
+      </a>
+
+      <a class="community-card luahub" href="https://whatsapp.com/channel/0029VbDSpHuHgZWm4G291H16" target="_blank" rel="noopener noreferrer">
+        <div class="channel-logo">LH</div>
+        <div class="community-info">
+          <span class="tiny-label">WHATSAPP CHANNEL</span>
+          <h3>LUA HUB OFFICIAL</h3>
+          <p>Official news & project updates</p>
+        </div>
+        <span class="card-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- LINK COLLECTION -->
+  <section id="links" class="section">
+    <div class="section-heading">
+      <div>
+        <span class="overline">EXPLORE OUR UNIVERSE</span>
+        <h2>Link Collection</h2>
+      </div>
+      <button id="refreshLinks" class="refresh-button">↻ REFRESH</button>
+    </div>
+
+    <div class="link-grid" id="linkGrid">
+      <div class="loading-card">Loading links...</div>
+    </div>
+    <p id="linkStatus" class="link-status"></p>
+  </section>
+
+  <!-- FREE ARCADE -->
+  <section id="arcade" class="section arcade-section">
+    <div class="section-heading">
+      <div>
+        <span class="overline">NO DOWNLOAD · NO PAYMENT</span>
+        <h2>Free Arcade</h2>
+      </div>
+      <span class="section-index">02 / ARCADE</span>
+    </div>
+
+    <div class="arcade-grid">
+
+      <!-- CLICK RUSH -->
+      <article class="game-card">
+        <div class="game-top">
+          <span class="game-tag">ARCADE / 01</span>
+          <span class="game-emoji">⚡</span>
+        </div>
+        <h3>CLICK RUSH</h3>
+        <p>Seberapa cepat kamu bisa klik? Kumpulkan poin sebanyak mungkin dalam 15 detik!</p>
+
+        <div class="game-stats">
+          <div><small>TIME</small><strong id="clickTime">15s</strong></div>
+          <div><small>SCORE</small><strong id="clickScore">0</strong></div>
+          <div><small>BEST</small><strong id="clickBest">0</strong></div>
+        </div>
+
+        <button id="clickStart" class="game-button">START GAME</button>
+        <button id="clickTarget" class="click-target" disabled>CLICK ME!</button>
+        <p id="clickMessage" class="game-message">Tekan Start untuk mulai!</p>
+      </article>
+
+      <!-- REACTION TEST -->
+      <article class="game-card">
+        <div class="game-top">
+          <span class="game-tag">ARCADE / 02</span>
+          <span class="game-emoji">🎯</span>
+        </div>
+        <h3>REACTION TEST</h3>
+        <p>Tes refleksmu. Tunggu panel berubah hijau, lalu klik secepat mungkin!</p>
+
+        <div class="reaction-display" id="reactionDisplay">
+          <span id="reactionText">READY?</span>
+        </div>
+
+        <div class="game-stats reaction-stats">
+          <div><small>YOUR TIME</small><strong id="reactionTime">-- ms</strong></div>
+          <div><small>BEST</small><strong id="reactionBest">-- ms</strong></div>
+        </div>
+
+        <button id="reactionStart" class="game-button">START REACTION</button>
+        <p id="reactionMessage" class="game-message">Jangan klik sebelum hijau!</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section class="donate-banner">
+    <div>
+      <span class="overline">SUPPORT OUR PROJECT</span>
+      <h2>Help us build<br><span>something bigger.</span></h2>
+      <p>Dukung pengembangan project LUA HUB.</p>
+    </div>
+    <a href="https://saweria.co/LUAHUBDONATE/wishlist/kursi-gaming-impian-2-ftqvq0" target="_blank" rel="noopener noreferrer" class="button red">SUPPORT LUA HUB ♥</a>
+  </section>
+
+</main>
+
+<footer>
+  <a href="#" class="brand"><span class="brand-lua">LUA</span> HUB <span class="brand-x">× DANZZ</span></a>
+  <p>Built for the gaming community.</p>
+  <small>© LUA HUB × DANZZ · GAMING PORTAL</small>
+</footer>
+
+<script>
+/* ==========================================
+   LINK COLLECTION - GITHUB .DL READER
+========================================== */
+
+// GANTI konfigurasi di bawah dengan repo data link kamu
+const GITHUB_OWNER = "USERNAME_GITHUB";
+const GITHUB_REPO = "LUAHUB-LINK-DATA";
+const GITHUB_BRANCH = "main";
+const GITHUB_FOLDER = "links";
+
+const linkGrid = document.getElementById("linkGrid");
+const linkStatus = document.getElementElementById
+  ? document.getElementById("linkStatus")
+  : document.getElementById("linkStatus");
+
+function parseDL(text) {
+  const data = {};
+  text.split(/\r?\n/).forEach(line => {
+    const match = line.match(/^\s*(nama|link)\s*=\s*(.*?)\s*$/i);
+    if (match) data[match[1].toLowerCase()] = match[2];
+  });
+  return data;
+}
+
+function addLinkCard(name, url) {
+  const a = document.createElement("a");
+  a.className = "dynamic-card";
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+
+  const icon = document.createElement("div");
+  icon.className = "dynamic-icon";
+  icon.textContent = "↗";
+
+  const content = document.createElement("div");
+  content.className = "dynamic-content";
+
+  const title = document.createElement("h3");
+  title.textContent = name;
+
+  const description = document.createElement("p");
+  description.textContent = "OPEN LINK";
+
+  const arrow = document.createElement("span");
+  arrow.className = "card-arrow";
+  arrow.textContent = "↗";
+
+  content.append(title, description);
+  a.append(icon, content, arrow);
+  linkGrid.appendChild(a);
+}
+
+async function loadLinks() {
+  linkGrid.innerHTML = '<div class="loading-card">Loading link collection...</div>';
+  linkStatus.textContent = "";
+
+  const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FOLDER}?ref=${GITHUB_BRANCH}`;
+
+  try {
+    const response = await fetch(api);
+    if (!response.ok) throw new Error("GitHub repository/folder belum ditemukan.");
+
+    const files = await response.json();
+    const dlFiles = files.filter(f => f.type === "file" && f.name.endsWith(".dl"));
+
+    linkGrid.innerHTML = "";
+    let total = 0;
+
+    for (const file of dlFiles) {
+      const fileRes = await fetch(file.download_url);
+      if (!fileRes.ok) continue;
+
+      const data = parseDL(await fileRes.text());
+
+      if (data.nama && data.link && /^https?:\/\//i.test(data.link)) {
+        addLinkCard(data.nama, data.link);
+        total++;
+      }
+    }
+
+    if (!total) {
+      linkGrid.innerHTML = '<div class="loading-card">Belum ada link. Tambahkan file .dl ke folder links.</div>';
+    } else {
+      linkStatus.textContent = `${total} link tersedia`;
+    }
+  } catch (err) {
+    linkGrid.innerHTML = '<div class="loading-card">Link belum dapat dimuat. Periksa konfigurasi repo data.</div>';
+    linkStatus.textContent = err.message;
+  }
+}
+
+document.getElementById("refreshLinks").addEventListener("click", loadLinks);
+loadLinks();
+
+
+/* ==========================================
+   GAME 01 - CLICK RUSH
+========================================== */
+
+let clickScore = 0;
+let clickSeconds = 15;
+let clickRunning = false;
+let clickTimer = null;
+let bestClick = 0;
+
+const clickTarget = document.getElementById("clickTarget");
+const clickStart = document.getElementById("clickStart");
+
+document.getElementById("clickBest").textContent = bestClick;
+
+clickStart.addEventListener("click", () => {
+  if (clickRunning) return;
+
+  clickScore = 0;
+  clickSeconds = 15;
+  clickRunning = true;
+
+  document.getElementById("clickScore").textContent = "0";
+  document.getElementById("clickTime").textContent = "15s";
+  document.getElementById("clickMessage").textContent = "GO GO GO!";
+  clickTarget.disabled = false;
+  clickStart.disabled = true;
+
+  clickTimer = setInterval(() => {
+    clickSeconds--;
+    document.getElementById("clickTime").textContent = clickSeconds + "s";
+
+    if (clickSeconds <= 0) {
+      clearInterval(clickTimer);
+      clickRunning = false;
+      clickTarget.disabled = true;
+      clickStart.disabled = false;
+      clickStart.textContent = "PLAY AGAIN";
+
+      document.getElementById("clickMessage").textContent =
+        `Waktu habis! Skor kamu ${clickScore} klik!`;
+
+      if (clickScore > bestClick) {
+        bestClick = clickScore;
+        document.getElementById("clickBest").textContent = bestClick;
+      }
+    }
+  }, 1000);
+});
+
+clickTarget.addEventListener("click", () => {
+  if (!clickRunning) return;
+  clickScore++;
+  document.getElementById("clickScore").textContent = clickScore;
+});
+
+
+/* ==========================================
+   GAME 02 - REACTION TEST
+========================================== */
+
+let reactionState = "idle";
+let reactionTimeout = null;
+let reactionStartTime = 0;
+let bestReaction = null;
+
+const reactionDisplay = document.getElementById("reactionDisplay");
+const reactionStart = document.getElementById("reactionStart");
+const reactionText = document.getElementById("reactionText");
+
+reactionStart.addEventListener("click", () => {
+  if (reactionState === "waiting" || reactionState === "ready") return;
+
+  reactionState = "waiting";
+  reactionDisplay.className = "reaction-display waiting";
+  reactionText.textContent = "WAIT...";
+  reactionStart.disabled = true;
+  document.getElementById("reactionMessage").textContent = "Tunggu warna hijau...";
+
+  const delay = 1500 + Math.random() * 4000;
+
+  reactionTimeout = setTimeout(() => {
+    reactionState = "ready";
+    reactionDisplay.className = "reaction-display ready";
+    reactionText.textContent = "CLICK!";
+    reactionStartTime = performance.now();
+  }, delay);
+});
+
+reactionDisplay.addEventListener("click", () => {
+  if (reactionState === "waiting") {
+    clearTimeout(reactionTimeout);
+    reactionState = "idle";
+    reactionDisplay.className = "reaction-display";
+    reactionText.textContent = "TOO EARLY!";
+    reactionStart.disabled = false;
+    document.getElementById("reactionMessage").textContent = "Kepagian! Coba lagi.";
+    return;
+  }
+
+  if (reactionState === "ready") {
+    const elapsed = Math.round(performance.now() - reactionStartTime);
+    reactionState = "idle";
+    reactionDisplay.className = "reaction-display";
+    reactionText.textContent = elapsed + " MS";
+    document.getElementById("reactionTime").textContent = elapsed + " ms";
+    document.getElementById("reactionMessage").textContent = "Nice! Coba pecahkan rekor kamu.";
+    reactionStart.disabled = false;
+
+    if (bestReaction === null || elapsed < bestReaction) {
+      bestReaction = elapsed;
+      document.getElementById("reactionBest").textContent = elapsed + " ms";
+    }
+  }
+});
+</script>
+
+</body>
+</html>
